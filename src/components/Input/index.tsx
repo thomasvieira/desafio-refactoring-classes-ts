@@ -9,8 +9,9 @@ import { useField } from '@unform/core';
 
 import { Container } from './styles';
 
-const Input = ({ name, icon: Icon, ...rest }) => {
-  const inputRef = useRef(null);
+export function Input(props: { [x: string]: any; name: any; icon?: any; }) {
+  const { name, icon: Icon, ...rest } = props;
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
@@ -50,4 +51,4 @@ const Input = ({ name, icon: Icon, ...rest }) => {
   );
 };
 
-export default Input;
+

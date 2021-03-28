@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.div`
+interface InputContainerProps {
+  isFocused: boolean;
+  isFilled: boolean;
+}
+
+export const Container = styled.div<InputContainerProps>`
   display: flex;
   align-items: center;
 
@@ -9,6 +14,14 @@ export const Container = styled.div`
   padding: 18px 24px;
   width: 100%;
   font-size: 16px;
+
+  ${props =>
+    props.isFocused &&
+    css`
+      color: #ff9000;
+      border: 1px solid;
+      border-color: #ff9000;
+    `}
 
   & + div {
     margin-top: 24px;
@@ -21,11 +34,16 @@ export const Container = styled.div`
     line-height: 36px;
   }
 
+  input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: #b7b7cc;
+
   ${props =>
     props.isFocused &&
     css`
       color: #ff9000;
-      border-color: #ff9000;
     `}
 
   ${props =>
@@ -33,12 +51,6 @@ export const Container = styled.div`
     css`
       color: #ff9000;
     `}
-
-  input {
-    flex: 1;
-    background: transparent;
-    border: 0;
-    color: #b7b7cc;
 
     &::placeholder {
       color: #b7b7cc;
